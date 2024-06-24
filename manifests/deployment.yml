@@ -27,7 +27,7 @@ metadata:
   labels:
     app: app1-spring
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: app1-spring
   ports:
