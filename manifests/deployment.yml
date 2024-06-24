@@ -1,19 +1,36 @@
-apiVersion : apps/v1
+
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: krishnaspringbootapp 
+  name: app1-spring-deployment
+  labels:
+    app: app1-spring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: krishnaspringbootapp
+      app: app1-spring
   template:
     metadata:
       labels:
-        app: krishnaspringbootapp 
+        app: app1-spring
     spec:
       containers:
-        - name: krishnaspringbootapp 
-          image: demaksac.azurecr.io/springboot:52
+        - name: app1-spring
+          image: demaksac.azurecr.io/app1:43
           ports:
-          - containerPort: 80
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app1-spring-loadbalancer-service
+  labels:
+    app: app1-spring
+spec:
+  type: LoadBalancer
+  selector:
+    app: app1-spring
+  ports:
+    - port: 80
+      targetPort: 80
