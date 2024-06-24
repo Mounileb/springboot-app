@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: akannanspringbootapp 
+  name: krishnaspringbootapp 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: akannanspringbootapp
+      app: krishnaspringbootapp
   template:
     metadata:
       labels:
-        app: akannanspringbootapp 
+        app: krishnaspringbootapp 
     spec:
       containers:
-        - name: akannanspringbootapp 
-          image: myacrrepo431.azurecr.io/akannanspringbootapp
+        - name: krishnaspringbootapp 
+          image: demaksac.azurecr.io/springboot:52
           ports:
           - containerPort: 80
